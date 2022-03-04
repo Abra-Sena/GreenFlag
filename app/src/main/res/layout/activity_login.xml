@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inside Login activity just for test purpose" />
+
+    <!-- TODO: style these text views based on Material.io.design   -->
+    <!-- TODO: and based on the UI design provided   -->
+    <TextView
+        android:id="@+id/tv_email_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
+        android:fontFamily="@font/custom_font"
+        android:text="@string/textView_email"
+        android:textColor="@color/white"/>
+    <EditText
+        android:id="@+id/et_email_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/edittext_background"
+        android:padding="@dimen/margin_medium"
+        android:inputType="textEmailAddress"
+        android:hint="@string/textView_email"
+        android:autofillHints="no" />
+
+    <TextView
+        android:id="@+id/tv_password_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
+        android:fontFamily="@font/custom_font"
+        android:text="@string/textView_password"
+        android:textColor="@color/white"/>
+    <EditText
+        android:id="@+id/et_password_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/edittext_background"
+        android:padding="@dimen/margin_medium"
+        android:inputType="textPassword"
+        android:hint="@string/textView_password"
+        android:autofillHints="no" />
+
+    <!-- TODO: to be enabled only when form is valid   -->
+    <!-- TODO: add enable opacity to button resources   -->
+    <android.widget.Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background"
+        android:fontFamily="@font/custom_font"
+        android:text="@string/btn_login"
+        android:textAllCaps="false" />
+
+</LinearLayout>

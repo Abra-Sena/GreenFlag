@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "123749333579",
+    "project_id": "greenflag-f7151",
+    "storage_bucket": "greenflag-f7151.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123749333579:android:04d1733ef207af6ed0abce",
+        "android_client_info": {
+          "package_name": "com.emissa.apps.greenflag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123749333579-hrv56sfqekm0tbveja48du227og7ikv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.emissa.apps.greenflag",
+            "certificate_hash": "75634b19f4a432e43844838ca74ada4b4e52465d"
+          }
+        },
+        {
+          "client_id": "123749333579-pdpjmecuvc7d7h4spn2lqhcfoe1379em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk-oEzamcw1BbYVT6e1DuOG0ElW4CoeNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123749333579-pdpjmecuvc7d7h4spn2lqhcfoe1379em.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

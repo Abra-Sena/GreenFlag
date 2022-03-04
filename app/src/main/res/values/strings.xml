@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">GreenFlag</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="login_to_account">Sign into account</string>
+    <string name="btn_next">Next</string>
+
+    <!-- Text view strings for Main activity  -->
+    <string name="textView_main_text">GreenFlag customers can create an account to access</string>
+    <string name="textView_main_service_health">Car health updates</string>
+    <string name="textView_main_service_rescue">Request a rescue online</string>
+    <string name="textView_main_service_policy">Policy information</string>
+
+    <!-- Text view strings for Signup activity  -->
+    <string name="textView_email">Email address</string>
+    <string name="textView_password">Create password</string>
+    <string name="textView_password_repeat">Repeat password</string>
+    <string name="textView_password_check">
+        Your password should have a minimum of 8 characters and contain at least one number,
+        one uppercase and one lower case letter. You can use special characters.
+    </string>
+
+    <!-- EditText strings for Signup activity  -->
+    <string name="editText_email">Enter email</string>
+    <string name="editText_password">See password criteria below</string>
+    <string name="editText_password_repeat">Repeat password</string>
+
+    <!-- Content description strings  -->
+    <string name="app_logo">App logo</string>
+    <string name="check_mark">Check mark button</string>
+
+    <!-- Error strings  -->
+    <string name="error_email">Enter a correct email address</string>
+    <string name="error_duplicate_email">
+        An account already exists for this email address
+    </string>
+    <string name="error_password_not_valid">
+        One of the passwords you entered wasn\'t valid
+    </string>
+    <string name="error_password_not_match">Your passwords don\'t match</string>
+    <string name="btn_login">Login</string>
+    <string name="current_user">"Current user: "</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+</resources>
