@@ -93,7 +93,6 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_marginTop="@dimen/margin_extra_large"
-        android:enabled="false"
         android:text="@string/btn_next"
         style="@style/Theme.Button" />
 </LinearLayout>

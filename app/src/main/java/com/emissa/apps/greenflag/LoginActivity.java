@@ -19,7 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity implements TextWatcher {
+public class LoginActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = LoginActivity.class.getSimpleName();
 
@@ -27,9 +27,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher {
     private EditText etEmailAddress;
     private EditText etPassword;
     private Button btnLogin;
-
-    private String userEmail;
-    private String userPass ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,55 +40,38 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher {
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login);
 
-        userEmail = etEmailAddress.getText().toString();
-        userPass = etPassword.getText().toString();
-
         btnLogin.setOnClickListener(view -> {
-
-            mAuth.signInWithEmailAndPassword(userEmail, userPass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with current user's information
-                            Log.d(LOG_TAG, "Sign in Success!");
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            // Sign in fails, display error message to User
-                            Log.w(LOG_TAG, "Failure on sign in!", task.getException());
-                            Toast.makeText(
-                                    LoginActivity.this,
-                                    "Authentication failed. Something went wrong!",
-                                    Toast.LENGTH_LONG
-                            ).show();
+            String userEmail = etEmailAddress.getText().toString();
+            String userPass = etPassword.getText().toString();
+            boolean passwordValid = isPassValid(userPass);
+            // Enable 'Next' button if passwords match and have the correct length
+            // Show corresponding error message otherwise
+            if (passwordValid) {
+//                btnLogin.setEnabled(true);
+                mAuth.signInWithEmailAndPassword(userEmail, userPass)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with current user's information
+                                Log.d(LOG_TAG, "Sign in Success!");
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                // Sign in fails, display error message to User
+                                Log.w(LOG_TAG, "Failure on sign in!", task.getException());
+                                Toast.makeText(
+                                        LoginActivity.this,
+                                        "Authentication failed. Something went wrong!",
+                                        Toast.LENGTH_LONG
+                                ).show();
+                            }
                         }
-                    }
-                });
+                    });
+            } else {
+                // Password not valid, set error message
+                etPassword.setError("Password incorrect!");
+            }
         });
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-//        boolean emailValid = isEmailValid(userEmail);
-        boolean passwordValid = isPassValid(userPass);
-        // Enable 'Next' button if passwords match and have the correct length
-        // Show corresponding error message otherwise
-        if (passwordValid) {
-            btnLogin.setEnabled(true);
-        } else {
-            // Password not valid, set error message
-            etPassword.setError("Password incorrect!");
-        }
     }
 }

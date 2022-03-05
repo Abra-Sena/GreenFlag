@@ -59,7 +59,28 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this,
                             "Password matched", Toast.LENGTH_LONG).show();
                     Log.d(LOG_TAG, "Click on button 'next'");
-                    btnNext.setEnabled(true);
+                    //TODO: This is crashing the code, enabling the button from here
+//                    btnNext.setEnabled(true);
+                    // If the new account is created, the user is also signed in.
+                    mAuth.createUserWithEmailAndPassword(userEmail, userPass)
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with current user's information
+                                        Log.d(LOG_TAG, "Success on account creation");
+                                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        // Sign in fails, display error message to User
+                                        Log.w(LOG_TAG, "Failure on account creation", task.getException());
+                                        Toast.makeText(SignupActivity.this,
+                                                "Authentication failed.",
+                                                Toast.LENGTH_LONG
+                                        ).show();
+                                    }
+                                }
+                            });
                 } else {
                     // Passwords do not match
                     etEtPasswordCheck.setError("The Passwords do  not match!");
@@ -69,26 +90,7 @@ public class SignupActivity extends AppCompatActivity {
                 etPassword.setError("Please see below the required format for the password to create!");
             }
 
-            // If the new account is created, the user is also signed in.
-            mAuth.createUserWithEmailAndPassword(userEmail, userPass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with current user's information
-                            Log.d(LOG_TAG, "Success on account creation");
-                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            // Sign in fails, display error message to User
-                            Log.w(LOG_TAG, "Failure on account creation", task.getException());
-                            Toast.makeText(SignupActivity.this,
-                                    "Authentication failed.",
-                                    Toast.LENGTH_LONG
-                            ).show();
-                        }
-                    }
-                });
+
         });
     }
 }

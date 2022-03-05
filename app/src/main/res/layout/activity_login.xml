@@ -69,7 +69,6 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_marginTop="@dimen/margin_large"
-        android:enabled="false"
         android:text="@string/btn_login"
         style="@style/Theme.Button" />
 
