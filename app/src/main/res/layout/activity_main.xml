@@ -4,63 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/margin_large"
+    android:paddingBottom="@dimen/margin_large"
     tools:context=".MainActivity">
+
 
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="48dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_extra_large"
+        android:layout_marginEnd="@dimen/margin_extra_large"
         android:contentDescription="@string/app_logo"
         android:src="@drawable/logo_green_flag_2x"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <!-- TODO: style these text views based on Material.io.design   -->
-    <!-- TODO: and based on the UI design provided   -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginStart="@dimen/margin_extra_large"
+        android:layout_marginEnd="@dimen/margin_extra_large"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/tv_user_info"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/iv_logo">
 
         <TextView
             android:id="@+id/tv_main_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
             android:text="@string/textView_main_text"
             android:textColor="@color/white"
+            android:textAppearance="@style/Theme.Headline"
             app:layout_constraintBottom_toTopOf="@id/tv_service_health"/>
 
         <TextView
             android:id="@+id/tv_service_health"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:drawablePadding="@dimen/margin_small"
             android:text="@string/textView_main_service_health"
+            android:textAppearance="@style/Theme.Body1"
             android:textColor="@color/white"
-            app:drawableStartCompat="@drawable/check_mark" />
+            app:drawableStartCompat="@drawable/ic_check_mark" />
+
 
         <TextView
             android:id="@+id/tv_service_rescue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:drawablePadding="@dimen/margin_small"
             android:text="@string/textView_main_service_rescue"
+            android:textAppearance="@style/Theme.Body1"
             android:textColor="@color/white"
-            app:drawableStartCompat="@drawable/check_mark" />
+            app:drawableStartCompat="@drawable/ic_check_mark" />
 
         <TextView
             android:id="@+id/tv_service_policy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/margin_small"
             android:text="@string/textView_main_service_policy"
+            android:textAppearance="@style/Theme.Body1"
             android:textColor="@color/white"
-            app:drawableStartCompat="@drawable/check_mark" />
+            app:drawableStartCompat="@drawable/ic_check_mark" />
     </LinearLayout>
 
     <TextView
@@ -69,8 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_large"
         android:padding="@dimen/margin_medium"
-        android:text=""
         android:textColor="@color/white"
+        android:textAppearance="@style/Theme.Body1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_create_account"/>
@@ -78,15 +91,12 @@
     <android.widget.Button
         android:id="@+id/btn_create_account"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/btn_background"
+        android:layout_marginEnd="@dimen/margin_large"
         android:text="@string/create_an_account"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck" />
+        style="@style/Theme.Button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

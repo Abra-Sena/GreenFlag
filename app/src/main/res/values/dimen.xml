@@ -5,7 +5,14 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_extra_large">48dp</dimen>
     <dimen name="margin_huge">64dp</dimen>
+
+    <!-- Other margins -->
+   <dimen name="text_size_headline5">22sp</dimen>
+   <dimen name="text_size_body1">16sp</dimen>
+   <dimen name="text_size_body2">14sp</dimen>
+    <dimen name="text_size_button">20sp</dimen>
 
     <!-- Other margins -->
     <dimen name="card_side_margin">12dp</dimen>

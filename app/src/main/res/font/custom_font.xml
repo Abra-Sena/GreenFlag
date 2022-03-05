@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<font-family xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
     <!--  Regular  -->
     <font
-        android:font="@font/museo_sans_300"
         android:fontStyle="normal"
         android:fontWeight="300"
-        app:font="@font/museo_sans_300"
-        app:fontStyle="normal"
-        app:fontWeight="300" />
+        android:font="@font/museo_sans_300" />
     <!--  Bold  -->
     <font
-        android:font="@font/museo_sans_500"
         android:fontStyle="normal"
         android:fontWeight="500"
-        app:font="@font/museo_sans_500"
-        app:fontStyle="normal"
-        app:fontWeight="500" />
+        android:font="@font/museo_sans_500" />
 </font-family>

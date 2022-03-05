@@ -3,27 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:padding="@dimen/margin_large"
     tools:context=".SignupActivity">
 
-    <!-- TODO: style these text views based on Material.io.design   -->
-    <!-- TODO: and based on the UI design provided   -->
     <TextView
         android:id="@+id/tv_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:paddingTop="@dimen/margin_medium"
         android:paddingBottom="@dimen/margin_medium"
         android:fontFamily="@font/custom_font"
         android:text="@string/textView_email"
+        android:textAppearance="@style/Theme.Body1"
         android:textColor="@color/white"/>
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="@dimen/margin_medium"
         android:background="@drawable/edittext_background"
         android:padding="@dimen/margin_medium"
         android:inputType="textEmailAddress"
@@ -34,61 +32,68 @@
         android:id="@+id/tv_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/margin_medium"
         android:paddingBottom="@dimen/margin_medium"
         android:fontFamily="@font/custom_font"
         android:text="@string/textView_password"
+        android:textAppearance="@style/Theme.Body1"
         android:textColor="@color/white"/>
-    <EditText
-        android:id="@+id/et_password"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
-        android:background="@drawable/edittext_background"
-        android:padding="@dimen/margin_medium"
-        android:inputType="textPassword"
         android:hint="@string/textView_password"
-        android:autofillHints="no" />
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:background="@drawable/edittext_background"
+            android:padding="@dimen/margin_medium"
+            android:inputType="textPassword"
+            android:autofillHints="no" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_password_repeat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/margin_medium"
         android:paddingBottom="@dimen/margin_medium"
-        android:fontFamily="@font/custom_font"
         android:text="@string/textView_password_repeat"
+        android:textAppearance="@style/Theme.Body1"
         android:textColor="@color/white"/>
-    <EditText
-        android:id="@+id/et_password_repeat"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
-        android:background="@drawable/edittext_background"
-        android:padding="@dimen/margin_medium"
-        android:inputType="textPassword"
         android:hint="@string/textView_password_repeat"
-        android:autofillHints="no" />
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:background="@drawable/edittext_background"
+            android:padding="@dimen/margin_medium"
+            android:inputType="textPassword"
+            android:autofillHints="no" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_password_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/margin_medium"
-        android:paddingBottom="@dimen/margin_medium"
-        android:fontFamily="@font/custom_font"
+        android:padding="@dimen/margin_tiny"
         android:text="@string/textView_password_check"
+        android:textAppearance="@style/Theme.Body1"
         android:textColor="@color/white" />
 
-    <!-- TODO: to be enabled only when form is valid   -->
-    <!-- TODO: add enable opacity to button resources   -->
     <android.widget.Button
         android:id="@+id/btn_next"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_background"
+        android:layout_height="?actionBarSize"
+        android:layout_marginTop="@dimen/margin_extra_large"
         android:enabled="false"
-        android:fontFamily="@font/custom_font"
         android:text="@string/btn_next"
-        android:textAllCaps="false" />
+        style="@style/Theme.Button" />
 </LinearLayout>

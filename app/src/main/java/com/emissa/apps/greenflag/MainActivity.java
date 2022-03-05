@@ -19,10 +19,11 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
-    public static ActivityMainBinding mainBinding;
 
-    public TextView userData;
-    public static FirebaseAuth mAuth;
+    private ActivityMainBinding mainBinding;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private TextView userData;
     private Button createAccount;
 
     @Override
@@ -30,14 +31,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
-//        setContentView(R.layout.activity_main);
-
-        mAuth = FirebaseAuth.getInstance();
 
         userData = mainBinding.tvUserInfo;
-//        userData = findViewById(R.id.tv_user_info);
         createAccount = mainBinding.btnCreateAccount;
-//        createAccount = findViewById(R.id.btn_create_account);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (currentUser != null) {
+            currentUser.reload();
+            userData.setText(getString(R.string.current_user) + currentUser.getEmail());
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
@@ -58,13 +66,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.logout_icon:
-//
-//        }
-        // handles user sign out
-        if (item.getItemId() == R.id.logout_icon)
-                mAuth.signOut();
+        switch (item.getItemId()) {
+            case R.id.login_icon:
+                gotoLoginActivity();
+                break;
+            case R.id.logout_icon:
+                logOut();
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logOut() {
+        Log.d(LOG_TAG, "Click on logout icon from menu!");
+        mAuth.signOut();
+        Log.d(LOG_TAG, "User successfully logged out!");
+        // Set text view of current user info to invisible
+        userData.setVisibility(View.INVISIBLE);
+    }
+
+    private void gotoLoginActivity() {
+        Log.d(LOG_TAG, "Click on login icon from menu!");
+        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,12 +1,14 @@
 package com.emissa.apps.greenflag;
 
-import static com.emissa.apps.greenflag.ApplicationUtils.updateUI;
+import static com.emissa.apps.greenflag.Validator.isPassValid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,9 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements TextWatcher {
 
     public static final String LOG_TAG = LoginActivity.class.getSimpleName();
 
@@ -26,6 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etEmailAddress;
     private EditText etPassword;
     private Button btnLogin;
+
+    private String userEmail;
+    private String userPass ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +43,10 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login);
 
+        userEmail = etEmailAddress.getText().toString();
+        userPass = etPassword.getText().toString();
+
         btnLogin.setOnClickListener(view -> {
-            String userEmail = etEmailAddress.getText().toString();
-            String userPass = etPassword.getText().toString();
 
             mAuth.signInWithEmailAndPassword(userEmail, userPass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -50,19 +55,16 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with current user's information
                             Log.d(LOG_TAG, "Sign in Success!");
-                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user, LOG_TAG);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         } else {
                             // Sign in fails, display error message to User
                             Log.w(LOG_TAG, "Failure on sign in!", task.getException());
                             Toast.makeText(
                                     LoginActivity.this,
-                                    "Authentication failed.",
+                                    "Authentication failed. Something went wrong!",
                                     Toast.LENGTH_LONG
                             ).show();
-                            updateUI(null, LOG_TAG);
                         }
                     }
                 });
@@ -70,9 +72,26 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) currentUser.reload();
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+//        boolean emailValid = isEmailValid(userEmail);
+        boolean passwordValid = isPassValid(userPass);
+        // Enable 'Next' button if passwords match and have the correct length
+        // Show corresponding error message otherwise
+        if (passwordValid) {
+            btnLogin.setEnabled(true);
+        } else {
+            // Password not valid, set error message
+            etPassword.setError("Password incorrect!");
+        }
     }
 }

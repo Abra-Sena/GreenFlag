@@ -2,6 +2,7 @@
     <string name="app_name">GreenFlag</string>
     <string name="create_an_account">Create an account</string>
     <string name="login_to_account">Sign into account</string>
+    <string name="login_welcome_message">Inside Login activity</string>
     <string name="btn_next">Next</string>
 
     <!-- Text view strings for Main activity  -->
@@ -13,6 +14,7 @@
     <!-- Text view strings for Signup activity  -->
     <string name="textView_email">Email address</string>
     <string name="textView_password">Create password</string>
+    <string name="tv_enter_password">Enter password</string>
     <string name="textView_password_repeat">Repeat password</string>
     <string name="textView_password_check">
         Your password should have a minimum of 8 characters and contain at least one number,
