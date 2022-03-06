@@ -56,10 +56,11 @@ public class SignupActivity extends AppCompatActivity {
             // Show corresponding error message otherwise
             if (passwordValid) {
                 if (passRepeated.equals(userPass)) {
-                    Toast.makeText(SignupActivity.this,
+                    Toast.makeText(getBaseContext(),
                             "Password matched", Toast.LENGTH_LONG).show();
                     Log.d(LOG_TAG, "Click on button 'next'");
                     //TODO: This is crashing the code, enabling the button from here
+                    // here there is no need of enabling the button since you entered to the click already
 //                    btnNext.setEnabled(true);
                     // If the new account is created, the user is also signed in.
                     mAuth.createUserWithEmailAndPassword(userEmail, userPass)
@@ -74,7 +75,7 @@ public class SignupActivity extends AppCompatActivity {
                                     } else {
                                         // Sign in fails, display error message to User
                                         Log.w(LOG_TAG, "Failure on account creation", task.getException());
-                                        Toast.makeText(SignupActivity.this,
+                                        Toast.makeText(getBaseContext(),
                                                 "Authentication failed.",
                                                 Toast.LENGTH_LONG
                                         ).show();
