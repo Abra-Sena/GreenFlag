@@ -55,13 +55,13 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with current user's information
                                 Log.d(LOG_TAG, "Sign in Success!");
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(getBaseContext(), MainActivity.class);
                                 startActivity(intent);
                             } else {
                                 // Sign in fails, display error message to User
                                 Log.w(LOG_TAG, "Failure on sign in!", task.getException());
                                 Toast.makeText(
-                                        LoginActivity.this,
+                                        getBaseContext(),
                                         "Authentication failed. Something went wrong!",
                                         Toast.LENGTH_LONG
                                 ).show();
