@@ -61,7 +61,8 @@ public class SignupActivity extends AppCompatActivity {
                     Log.d(LOG_TAG, "Click on button 'next'");
                     //TODO: This is crashing the code, enabling the button from here
 //                    btnNext.setEnabled(true);
-                    // If the new account is created, the user is also signed in.
+                    // If the new accou
+                // }|Znt is created, the user is also signed in.
                     mAuth.createUserWithEmailAndPassword(userEmail, userPass)
                             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                 @Override
